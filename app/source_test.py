@@ -1,5 +1,5 @@
 import unittest
-from models import source
+from models import Source
 
 Source = source.Source
 
