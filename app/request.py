@@ -5,5 +5,5 @@ api_key = app.config['NEWS_API_KEY']
 #Getting Sources url
 sources_url = app.config ['NEWS_API_SOURCES_URL']
 #Getting Top Headlines
-top_url = app.config ['NEWS_API_TOP_HEADLINES_URL']
+category_url = app.config ['NEWS_API_TOP_HEADLINES_URL']
 
