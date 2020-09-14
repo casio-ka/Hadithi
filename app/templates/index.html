@@ -3,14 +3,17 @@
  <!-- Content Block -->
  {% block content %}
 
- <div class="col-12">
-    <h1 class="text-capitalize text-center"> HEADLINE NEWS </h3>
-    <div class="container">
+ <div class="container-fluid">
+    <h1 class="text-capitalize text-center"> TOP HEADLINES </h3>
+    
       <div class="card-columns">
+        
         {% for headlines in headlines %}
 
-        <div class="card">
-          <img class="card" src="{{headlines.image}}" alt="Card image cap" size="100px180">
+        <div class= "row row-cols-1 row-cols-md-2" >
+          <div class="card-deck col mb-4" >
+            <div class="card" >
+             <img class="card-img-top" src="{{headlines.image}}" alt="card image top">
           <div class="card-body">
             <h5 class="card-title">{{headlines.author}}</h5>
             <p class="card-text">{{headlines.description}}</p>
@@ -21,10 +24,11 @@
           <div class="card-footer">
             <small class="text-muted">Publish date:{{headlines.time}}</small>
           </div>
+            </div>
+          </div>
         </div>
         {% endfor %}
       </div>
-    </div>
   </div>
 
 
