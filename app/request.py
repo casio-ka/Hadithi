@@ -1,9 +1,10 @@
 from app import app
 import urllib.request,json
-from .models import source, article
+from .models import source, article, headlines
 
 Source = source.Source
 Article = article.Article
+Headlines = headlines.Headlines
 
 #Getting api key
 api_key = app.config['NEWS_API_KEY']
@@ -24,7 +25,7 @@ def get_source():
 
         source_results = None
 
-        if get_sources_response['sources']:
+        if  get_sources_response['sources']:
             source_results_list = get_sources_response['sources']
             source_results = process_results(source_results_list)
 
@@ -62,19 +63,19 @@ def article_source(id):
 
         article_source_results = None
 
-        if article_source_response['articles']:
+        if  article_source_response['articles']:
             article_source_list = article_source_response['articles']
             article_source_results = process_articles_results(article_source_list)
 
 
     return article_source_results
 
-def process_articles_results(news):
+def process_articles_results(article_list):
     '''
     function that processes the json files of articles from the api key
     '''
     article_source_results = []
-    for article in news:
+    for article in article_list:
         author = article.get('author')
         description = article.get('description')
         time = article.get('publishedAt')
@@ -87,3 +88,59 @@ def process_articles_results(news):
             article_source_results.append(article_objects)
 
     return article_source_results
+
+def get_headlines():
+    '''
+    function that gets the response to the category json
+    '''
+    get_headlines_url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey={}'.format(api_key)
+    print(get_headlines_url)
+    with urllib.request.urlopen(get_headlines_url) as url:
+        get_headlines_data = url.read()
+        get_headlines_response = json.loads(get_headlines_data)
+
+        get_headlines_results = None
+
+        if  get_headlines_response['articles']:
+            get_headlines_list = get_headlines_response['articles']
+            get_headlines_results = process_articles_results(get_headlines_list)
+
+    return get_headlines_results
+
+
+def process_headlines_results(headlines_list):
+    '''
+    function that processes the json files of headlines from the api key
+    '''
+    get_headlines_results = []
+    for headlines in headlines_list:
+        author = headlines.get('author')
+        description = headlines.get('description')
+        time = headlines.get('publishedAt')
+        url = headlines.get('url')
+        image = headlines.get('urlToImage')
+        title = headlines.get ('title')
+
+        if url:
+            headline_objects = Headlines(author,description,time,url,image,title)
+            get_headlines_results.append(headline_objects)
+
+    return get_headlines_results
+
+def get_category(category_name):
+    '''
+    function that gets the response to the category json
+    '''
+    get_category_url = category_url.format(category_name,api_key)
+    print(get_category_url)
+    with urllib.request.urlopen(get_category_url) as url:
+        get_category_data = url.read()
+        get_cartegory_response = json.loads(get_category_data)
+
+        get_cartegory_results = None
+
+        if get_cartegory_response['articles']:
+            get_cartegory_list = get_cartegory_response['articles']
+            get_cartegory_results = process_articles_results(get_cartegory_list)
+
+    return get_cartegory_results
