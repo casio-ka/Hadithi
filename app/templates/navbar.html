@@ -8,18 +8,30 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          <li class="nav-item active">
+          <a class="nav-link" href="/{{'categories/Entertainment'}}">Entertainment <span class="sr-only">(current)</span></a> 
+          <li class="nav-item active"> 
+          <a class="nav-link" href="/{{'categories/Business'}}">Business <span class="sr-only">(current)</span></a>
+          <li class="nav-item active">
+          <a class="nav-link" href="/{{'categories/Sports'}}">Sports <span class="sr-only">(current)</span></a>
+          <li class="nav-item active">
+          <a class="nav-link" href="/{{'categories/Science'}}">Science <span class="sr-only">(current)</span></a>
+          <li class="nav-item active"></li>
+          <a class="nav-link" href="/{{'categories/Technology'}}">Technology <span class="sr-only">(current)</span></a>
+
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             News Sources
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
-            {% for source in sources %}<a class="dropdown-item" href="/article/{{source.id}}">{{source.id}}</a>{% endfor %}
-
+            {% for source in sources %}
+            <a class="dropdown-item" href="/article/{{source.id}}">{{source.id}}<span class="sr-only">(current)</span></a>
+            {% endfor %}
           </div>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <input class="form-control mr-sm-2" type="search" placeholder="Search for article" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Submit" >Search</button>
       </form>
     </div>
   </nav>

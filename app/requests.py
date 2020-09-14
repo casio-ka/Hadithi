@@ -7,11 +7,18 @@ Article = article.Article
 Headlines = headlines.Headlines
 
 #Getting api key
-api_key = app.config['NEWS_API_KEY']
+api_key = None
 #Getting Sources url
-source_url = app.config ['NEWS_API_SOURCE_URL']
+source_url = None
 #Getting Top Headlines
-category_url = app.config ['NEWS_API_TOP_HEADLINES_URL']
+category_url = None 
+
+def configure_request(app):
+    global api_key,source_url,category_url
+    api_key = app.config['NEWS_API_KEY']
+    source_url = app.config ['NEWS_API_SOURCE_URL']
+    category_url = app.config ['NEWS_API_TOP_HEADLINES_URL']
+
 
 def get_source():
     '''
@@ -144,3 +151,21 @@ def get_category(category_name):
             get_cartegory_results = process_articles_results(get_cartegory_list)
 
     return get_cartegory_results
+
+def search_article(source_name):
+    '''
+    function that searches the app using the app name
+    ''' 
+    search_article_url = 'https://newsapi.org/v2/everything?q={}&apiKey={}'.format(source_name,api_key)
+    with urllib.request.urlopen(search_article_url) as url:
+        search_source_data=url.read()
+        search_article_response = json.loads(search_source_data)
+
+        search_article_results = None
+
+        if search_article_response['articles']:
+            search_article_list = search_article_response['articles']
+            search_article_results = process_articles_results(search_article_list)
+    
+    return search_article_results
+
