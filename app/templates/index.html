@@ -3,11 +3,29 @@
  <!-- Content Block -->
  {% block content %}
 
- <!-- Sources -->
- <h3>Browse for News Sources</h3>
- <ul>
-     {% for source in sources %}
-     <li>{{source.id}}</li>
-     {% endfor %} 
- </ul>
+ <div class="col-12">
+    <h1 class="text-capitalize text-center"> HEADLINE NEWS </h3>
+    <div class="container">
+      <div class="card-columns">
+        {% for headlines in headlines %}
+
+        <div class="card">
+          <img class="card" src="{{headlines.image}}" alt="Card image cap" size="100px180">
+          <div class="card-body">
+            <h5 class="card-title">{{headlines.author}}</h5>
+            <p class="card-text">{{headlines.description}}</p>
+            <a href="{{headlines.url}}">
+              <p class="card-text">View More</p>
+            </a>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Publish date:{{headlines.time}}</small>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+
  {% endblock %}
