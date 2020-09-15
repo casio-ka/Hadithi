@@ -1,7 +1,6 @@
 import unittest
-from app.models import category
+from app.models import Category
 
-Category = category.Category
 
 class CategoryTest(unittest.TestCase):
     '''

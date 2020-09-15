@@ -1,7 +1,6 @@
 import unittest
-from app.models import headlines
+from app.models import Headlines
 
-Headlines = headlines.Headlines
 
 class HeadlinesTest(unittest.TestCase):
     '''

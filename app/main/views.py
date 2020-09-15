@@ -1,6 +1,5 @@
 from flask import Flask, render_template,request,redirect,url_for
 from . import main
-from app import app
 from ..requests import get_source, article_source, get_headlines, get_category, search_article
 
 @main.route('/')
@@ -40,7 +39,7 @@ def category(category_name):
     source = get_source()
     return render_template('categories.html',title = title, category = category, name= category_name, sources = source)
 
-@app.route('/search/<source_name>')
+@main.route('/search/<source_name>')
 def search(source_name):
     '''
     View function to display the search results
