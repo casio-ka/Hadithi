@@ -1,16 +1,20 @@
 {% extends 'base.html'%} 
+
+<!-- Content Block -->
 {% block content %}
 
 <body>
     <br>
     <br>
-    <h1 class="text-uppercase text-center">{{name}} NEWS </h3>
+    <h1 class="text-uppercase text-center">{{name}} NEWS </h1>
+    <br>
+    <br>
       <div class="container">
         <div class="card-columns">
           {% for category in category %}
   
-          <div class="card">
-            <img class="card-img-top" src="{{category.image}}" alt="Card Img" size="100px180">
+          <div class="card h-100">
+            <img class="card-img-top " src="{{category.image}}" alt="Card Img" size="100px180p">
             <div class="card-body">
               <h5 class="card-title">{{category.author}}</h5>
               <p class="card-text">{{category.description}}</p>

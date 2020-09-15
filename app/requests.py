@@ -148,14 +148,14 @@ def get_category(category_name):
 
     return get_cartegory_results
 
-def search_article(source_name):
+def search_article(article_name):
     '''
-    function that searches the app using the app name
+    function that searches the app using the source name
     ''' 
-    search_article_url = 'https://newsapi.org/v2/everything?q={}&apiKey={}'.format(source_name,api_key)
+    search_article_url = 'https://newsapi.org/v2/everything?q={}&apiKey={}'.format(article_name,api_key)
     with urllib.request.urlopen(search_article_url) as url:
-        search_source_data=url.read()
-        search_article_response = json.loads(search_source_data)
+        search_article_data=url.read()
+        search_article_response = json.loads(search_article_data)
 
         search_article_results = None
 

@@ -13,7 +13,7 @@ def index():
     search_article = request.args.get('article_query')
 
     if search_article:
-        return redirect(url_for('search',source_name=search_article))
+        return redirect(url_for('search',article_name=search_article))
     else:
         return render_template('index.html', title = title, sources = source, headlines = headlines)
 
@@ -39,13 +39,13 @@ def category(category_name):
     source = get_source()
     return render_template('categories.html',title = title, category = category, name= category_name, sources = source)
 
-@main.route('/search/<source_name>')
-def search(source_name):
+@main.route('/search/<article_name>')
+def search(article_name):
     '''
     View function to display the search results
     '''
-    source_name_list = source_name.split(" ")
-    source_name_format = "+".join(source_name_list)
-    searched_sources = search_article(source_name_format)
-    title = f'search results for {source_name}'
-    return render_template('search.html',sources = searched_sources)
+    article_name_list = article_name.split(" ")
+    article_name_format = "+".join(article_name_list)
+    searched_articles = search_article(article_name_format)
+    title = f'search results for {article_name}'
+    return render_template('search.html',sources = searched_articles)

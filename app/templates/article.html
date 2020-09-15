@@ -1,15 +1,21 @@
 {% extends 'base.html'%} 
+
+<!-- Content Block -->
 {% block content %}
 <body>
+  <br>
+  <br>
   <h1 class="text-capitalize text-center"> {{id}} </h3>
-  <div class="container-fluid">
+  <br>
+  <br>
+  <div class="container flex-container">
     <div class="card-columns">
 
       {% for article in articles %}
 
-      <div class= "row row-cols-1 row-cols-md-2" >
+      <div class= "row row-cols-1 row-cols-md-3" >
         <div class="col mb-4" >
-          <div class="card" >
+          <div class="card h-100" >
         <img class="card-img-top" src="{{article.image}}" alt="Card image cap" >
         <div class="card-body">
           <h5 class="card-title">{{article.author}}</h5>
