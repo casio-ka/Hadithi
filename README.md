@@ -6,7 +6,7 @@
 Hadithi is a news application that enables users view and preview news articles from various sources.The app has been made easy to use, with a navigation bar that has the news categories, sources and a search bar. On choosing a news source, a user  is redirected to the source page where they will get a preview the top news articles of the day. Choosing the categories will redirect a user to a page with the top articles in that said category.
 This is all achieved using the [News API](https://newsapi.org/).
 
-
+You can view the site at:[Heroku] https://hadithi-zetu.herokuapp.com/
 
 ## User Access
 These are the behaviours/features that the application implements for use by a user.
